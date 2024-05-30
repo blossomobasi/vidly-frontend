@@ -3,3 +3,11 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.active {
+  color: brown;
+}
+
+*:disabled {
+  cursor: not-allowed;
+}
