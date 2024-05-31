@@ -7,11 +7,7 @@ function UpdateGenre() {
   const { mutate: update, isPending } = useUpdateGenre();
   const { genres } = useGenres();
 
-  function handleAddGenre(
-    e: React.FormEvent,
-    // genreId: string,
-    newGenre: string
-  ) {
+  function handleAddGenre(e: React.FormEvent, newGenre: string) {
     e.preventDefault();
     const genreId = genres?.find((genre) => genre.name === newGenre)?.id;
     update({ id: genreId, name: newGenre });
