@@ -5,6 +5,9 @@ import PageNotFound from "./ui/PageNotFound";
 import AppLayout from "./ui/AppLayout";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import GenresPage from "./pages/GenresPage";
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
 
 function App() {
   const queryClient = new QueryClient({
@@ -22,7 +25,10 @@ function App() {
         <Routes>
           <Route element={<AppLayout />}>
             <Route index element={<Home />} />
+            <Route path="genres" element={<GenresPage />} />
             <Route path="about" element={<About />} />
+            <Route path="login" element={<Login />} />
+            <Route path="signup" element={<SignUp />} />
           </Route>
 
           <Route path="*" element={<PageNotFound />} />
