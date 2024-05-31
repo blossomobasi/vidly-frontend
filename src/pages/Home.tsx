@@ -1,13 +1,9 @@
-import AddNewGenre from "../components/AddNewGenre";
-import UpdateGenre from "../components/UpdateGenre";
-import Genres from "../components/Genres";
-
+import { useNavigate } from "react-router-dom";
 const Home = () => {
+  const navigate = useNavigate();
   return (
     <div>
-      <Genres />
-      <AddNewGenre />
-      <UpdateGenre />
+      <button onClick={() => navigate("login")}>Get Started</button>
     </div>
   );
 };
