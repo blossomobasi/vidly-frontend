@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useCreateGenre } from "../hooks/useCreateGenre";
+import { useCreateGenre } from "../hooks/genres/useCreateGenre";
 
 function AddNewGenre() {
   const [newGenre, setNewGenre] = useState("");

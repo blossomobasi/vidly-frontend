@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useUpdateGenre } from "../hooks/useUpdateGenre";
-import { useGenres } from "../hooks/useGenres";
+import { useUpdateGenre } from "../hooks/genres/useUpdateGenre";
+import { useGenres } from "../hooks/genres/useGenres";
 
 function UpdateGenre() {
   const [newGenre, setNewGenre] = useState("");
