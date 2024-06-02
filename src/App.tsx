@@ -1,14 +1,15 @@
-import Home from "./pages/Home";
-import About from "./pages/About";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import PageNotFound from "./ui/PageNotFound";
-import AppLayout from "./ui/AppLayout";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import GenresPage from "./pages/GenresPage";
+
+import AppLayout from "./ui/AppLayout";
+import Home from "./pages/Home";
+import About from "./pages/About";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import GenresPage from "./pages/GenresPage";
 import Dashboard from "./pages/Dashboard";
+import PageNotFound from "./ui/PageNotFound";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 
 function App() {
@@ -37,7 +38,7 @@ function App() {
             <Route path="genres" element={<GenresPage />} />
           </Route>
 
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="dashboard" element={<Dashboard />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<SignUp />} />
 
