@@ -6,7 +6,7 @@ import { useLogin } from "../hooks/auth/useLogin";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { mutate: login, isPending, error } = useLogin();
+  const { mutate: login, isPending: isLoggingIn, error } = useLogin();
 
   function handleLogin(e: React.FormEvent) {
     e.preventDefault();
@@ -30,7 +30,7 @@ function Login() {
             Email:
           </label>
           <input
-            disabled={isPending}
+            disabled={isLoggingIn}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             type="email"
@@ -44,7 +44,7 @@ function Login() {
             Password:
           </label>
           <input
-            disabled={isPending}
+            disabled={isLoggingIn}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             type="password"
@@ -54,7 +54,7 @@ function Login() {
           />
         </div>
         <button
-          disabled={isPending || !email || !password}
+          disabled={isLoggingIn || !email || !password}
           type="submit"
           className={styles.button}
         >
