@@ -8,6 +8,8 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import GenresPage from "./pages/GenresPage";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import Dashboard from "./pages/Dashboard";
+import ProtectedRoutes from "./components/ProtectedRoutes";
 
 function App() {
   const queryClient = new QueryClient({
@@ -23,13 +25,21 @@ function App() {
       <ReactQueryDevtools initialIsOpen={false} />
       <BrowserRouter>
         <Routes>
-          <Route element={<AppLayout />}>
+          <Route
+            element={
+              <ProtectedRoutes>
+                <AppLayout />
+              </ProtectedRoutes>
+            }
+          >
             <Route index element={<Home />} />
-            <Route path="genres" element={<GenresPage />} />
             <Route path="about" element={<About />} />
-            <Route path="login" element={<Login />} />
-            <Route path="signup" element={<SignUp />} />
+            <Route path="genres" element={<GenresPage />} />
           </Route>
+
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="login" element={<Login />} />
+          <Route path="signup" element={<SignUp />} />
 
           <Route path="*" element={<PageNotFound />} />
         </Routes>
