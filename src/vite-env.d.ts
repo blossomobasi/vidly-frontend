@@ -10,15 +10,21 @@ interface LoginInput {
   password: string;
 }
 
+interface LoginResponse {
+  token: string;
+}
+
 interface RegisterInput {
-  name: string;
+  firstName: string;
+  lastName: string;
   email: string;
   password: string;
 }
 
 interface IUser {
-  name: string;
+  id: string;
+  firstName: string;
+  lastName: string;
   email: string;
-  password: string;
-  isAdmin?: boolean;
+  role: "user" | "admin";
 }
