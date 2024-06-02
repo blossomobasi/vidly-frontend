@@ -1,12 +1,14 @@
 import { useMutation } from "@tanstack/react-query";
-import { createUser } from "../../services/auth/createUser";
+import { registerUser } from "../../services/auth/registerUser";
+import { useNavigate } from "react-router-dom";
 
-export function useCreateUser() {
+export function useRegisterUser() {
+  const navigate = useNavigate();
   const { mutate, isPending, error } = useMutation<void, Error, RegisterInput>({
-    mutationFn: ({ name, email, password }) =>
-      createUser({ email, name, password }),
+    mutationFn: (user) => registerUser(user),
     onSuccess: () => {
       console.log("Successfully created a user");
+      navigate("/login");
     },
     onError: (error) => {
       console.log("error", error.message);
