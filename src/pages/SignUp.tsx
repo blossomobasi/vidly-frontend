@@ -1,17 +1,23 @@
 import { Link } from "react-router-dom";
 import styles from "./SignUp.module.css";
 import { useState } from "react";
-import { useCreateUser } from "../hooks/auth/useCreateUser";
+import { useRegisterUser } from "../hooks/auth/useRegisterUser";
+
 function SignUp() {
-  const [name, setName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const { mutate: creatingUser, isPending, error } = useCreateUser();
+  const {
+    mutate: register,
+    isPending: isRegistering,
+    error,
+  } = useRegisterUser();
 
   function handleRegisterUser(e: React.FormEvent) {
     e.preventDefault();
-    if (!name || !email || !password || !confirmPassword) {
+    if (!firstName || !lastName || !email || !password || !confirmPassword) {
       console.log("Please fill in all fields");
       return;
     }
@@ -23,7 +29,7 @@ function SignUp() {
     if (error) {
       console.log(error.message);
     }
-    creatingUser({ name, email, password });
+    register({ firstName, lastName, email, password });
   }
 
   return (
@@ -31,16 +37,27 @@ function SignUp() {
       <form className={styles.signupForm} onSubmit={handleRegisterUser}>
         <h2 className={styles.title}>Sign Up</h2>
         <div className={styles.formGroup}>
-          {/* Name */}
-          <label htmlFor="name" className={styles.label}>
-            Name:
+          <label htmlFor="firstName" className={styles.label}>
+            First Name:
           </label>
           <input
-            disabled={isPending}
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            disabled={isRegistering}
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
             type="text"
-            id="name"
+            id="firstName"
+            className={styles.input}
+            required
+          />
+          <label htmlFor="lastName" className={styles.label}>
+            Last Name:
+          </label>
+          <input
+            disabled={isRegistering}
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            type="text"
+            id="lastName"
             className={styles.input}
             required
           />
@@ -49,7 +66,7 @@ function SignUp() {
             Email:
           </label>
           <input
-            disabled={isPending}
+            disabled={isRegistering}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             type="email"
@@ -63,7 +80,7 @@ function SignUp() {
             Password:
           </label>
           <input
-            disabled={isPending}
+            disabled={isRegistering}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             type="password"
@@ -77,7 +94,7 @@ function SignUp() {
             Confirm Password:
           </label>
           <input
-            disabled={isPending}
+            disabled={isRegistering}
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             type="password"
@@ -88,7 +105,12 @@ function SignUp() {
         </div>
         <button
           disabled={
-            isPending || !name || !email || !password || !confirmPassword
+            isRegistering ||
+            !firstName ||
+            !lastName ||
+            !email ||
+            !password ||
+            !confirmPassword
           }
           type="submit"
           className={styles.button}
