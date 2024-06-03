@@ -4,7 +4,7 @@ import { Genre } from "../types/genre";
 
 function Genres() {
   const navigate = useNavigate();
-  const { genres, isLoading, error } = useGenres();
+  const { data: genres, isLoading, error } = useGenres();
 
   return (
     <div>

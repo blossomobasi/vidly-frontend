@@ -8,5 +8,5 @@ export function useGenres() {
     queryFn: getGenres,
   });
 
-  return { genres: data, isLoading, error };
+  return { data, isLoading, error };
 }
