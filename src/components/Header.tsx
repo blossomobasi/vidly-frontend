@@ -36,7 +36,7 @@ const Header = () => {
             {link.name}
           </NavLink>
         ))}
-        {isAdmin && <NavLink to="admin-route">Admin</NavLink>}
+        {isAdmin && <NavLink to="admin-dashboard">Admin</NavLink>}
       </ul>
       <button onClick={handleLogout}>Logout</button>
     </nav>
