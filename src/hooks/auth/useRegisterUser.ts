@@ -1,6 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { registerUser } from "../../services/auth/registerUser";
 import { useNavigate } from "react-router-dom";
+import { RegisterInput } from "../../types/auth";
 
 export function useRegisterUser() {
   const navigate = useNavigate();

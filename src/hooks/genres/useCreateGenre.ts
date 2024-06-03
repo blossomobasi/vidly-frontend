@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createGenre } from "../../services/genres/createGenre";
+import { Genre } from "../../types/genre";
 
 export function useCreateGenre() {
   const queryClient = useQueryClient();
