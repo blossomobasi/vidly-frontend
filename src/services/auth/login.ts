@@ -1,3 +1,5 @@
+import { LoginInput } from "../../types/auth";
+
 export async function login(user: LoginInput) {
   const res = await fetch(`${import.meta.env.VITE_BACKEND_BASE_URL}/api/auth`, {
     method: "POST",

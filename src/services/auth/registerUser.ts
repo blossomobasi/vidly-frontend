@@ -1,3 +1,5 @@
+import { RegisterInput } from "../../types/auth";
+
 export async function registerUser(user: RegisterInput) {
   const res = await fetch(
     `${import.meta.env.VITE_BACKEND_BASE_URL}/api/users`,
