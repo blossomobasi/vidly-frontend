@@ -11,7 +11,10 @@ function Genres() {
       {isLoading && <div>Loading...</div>}
       {error && <div>{error.message}</div>}
       {genres?.map((genre: Genre) => (
-        <button onClick={() => navigate(`/genres/${genre.id}`)} key={genre.id}>
+        <button
+          onClick={() => navigate(`/genres/${genre._id}`)}
+          key={genre._id}
+        >
           {genre.name}
         </button>
       ))}
