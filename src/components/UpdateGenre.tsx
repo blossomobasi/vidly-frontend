@@ -5,11 +5,11 @@ import { useGenres } from "../hooks/genres/useGenres";
 function UpdateGenre() {
   const [newGenre, setNewGenre] = useState("");
   const { mutate: update, isPending } = useUpdateGenre();
-  const { genres } = useGenres();
+  const { data: genres } = useGenres();
 
-  function handleAddGenre(e: React.FormEvent, newGenre: string) {
+  function handleUpdateGenre(e: React.FormEvent, newGenre: string) {
     e.preventDefault();
-    const genreId = genres?.find((genre) => genre.name === newGenre)?.id;
+    const genreId = genres?.find((genre) => genre.name === newGenre)?._id;
     update({ id: genreId, name: newGenre });
     setNewGenre("");
   }
@@ -25,7 +25,7 @@ function UpdateGenre() {
       <button
         disabled={isPending || !newGenre}
         type="submit"
-        onClick={(e) => handleAddGenre(e, newGenre)}
+        onClick={(e) => handleUpdateGenre(e, newGenre)}
       >
         Update a Genre
       </button>
