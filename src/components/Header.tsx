@@ -9,7 +9,7 @@ const Header = () => {
   const { user, isAuthenticated, isAdmin } = useUser();
   const links = [
     { name: "home", href: "/" },
-    { name: "genre", href: "genres" },
+    { name: "movies", href: "movies" },
     { name: "about", href: "about" },
     { name: "dashboard", href: "dashboard" },
   ];
