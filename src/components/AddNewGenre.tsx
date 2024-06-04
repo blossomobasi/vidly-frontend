@@ -3,11 +3,11 @@ import { useCreateGenre } from "../hooks/genres/useCreateGenre";
 
 function AddNewGenre() {
   const [newGenre, setNewGenre] = useState("");
-  const { mutate, isPending } = useCreateGenre();
+  const { mutate: addGenre, isPending } = useCreateGenre();
 
   function handleAddGenre(e: React.FormEvent, newGenre: string) {
     e.preventDefault();
-    mutate(newGenre);
+    addGenre(newGenre);
     setNewGenre("");
   }
 
