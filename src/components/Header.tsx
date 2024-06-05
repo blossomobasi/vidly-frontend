@@ -9,9 +9,9 @@ const Header = () => {
   const { user, isAuthenticated, isAdmin } = useUser();
   const links = [
     { name: "home", href: "/" },
-    { name: "movies", href: "movies" },
-    { name: "about", href: "about" },
-    { name: "dashboard", href: "dashboard" },
+    { name: "movies", href: "/movies" },
+    { name: "about", href: "/about" },
+    { name: "dashboard", href: "/dashboard" },
   ];
 
   function handleLogout() {
@@ -25,8 +25,8 @@ const Header = () => {
           <p>Welcome {user?.firstName}!</p>
         ) : (
           <>
-            <button onClick={() => navigate("signup")}>Signup</button>
-            <button onClick={() => navigate("login")}>login</button>
+            <button onClick={() => navigate("/signup")}>Signup</button>
+            <button onClick={() => navigate("/login")}>login</button>
           </>
         )}
       </div>
