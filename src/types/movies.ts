@@ -1,6 +1,6 @@
 import { Genre } from "./genre";
 
-export interface Movie {
+export interface MovieResponse {
   _id: string;
   title: string;
   genre: Genre;
@@ -8,4 +8,12 @@ export interface Movie {
   numberInStock: number;
   dailyRentalRate: number;
   __v: number;
+}
+
+export interface Movie {
+  title: string;
+  genreId: string;
+  description: string;
+  numberInStock: number;
+  dailyRentalRate: number;
 }

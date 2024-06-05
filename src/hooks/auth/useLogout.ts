@@ -1,4 +1,5 @@
 import { useQueryClient } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 export function useLogout() {
@@ -8,6 +9,7 @@ export function useLogout() {
   function logout() {
     localStorage.removeItem("token");
     queryClient.clear();
+    toast.success("Successfully logged out");
     navigate("/login");
   }
 

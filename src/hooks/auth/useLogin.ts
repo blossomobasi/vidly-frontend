@@ -2,6 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import { login } from "../../services/auth/login";
 import { useNavigate } from "react-router-dom";
 import { LoginInput, LoginResponse } from "../../types/auth";
+import toast from "react-hot-toast";
 
 export function useLogin() {
   const navigate = useNavigate();
@@ -18,10 +19,11 @@ export function useLogin() {
       localStorage.setItem("token", res.token);
 
       navigate("/dashboard");
-      console.log("Successfully logged in");
+
+      toast.success("Successfully logged in");
     },
     onError: (error) => {
-      console.error(error);
+      toast.error(error.message);
     },
   });
 

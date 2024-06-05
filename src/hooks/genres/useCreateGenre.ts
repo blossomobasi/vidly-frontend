@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createGenre } from "../../services/genres/createGenre";
 import { Genre } from "../../types/genre";
+import toast from "react-hot-toast";
 
 export function useCreateGenre() {
   const queryClient = useQueryClient();
@@ -10,10 +11,10 @@ export function useCreateGenre() {
       queryClient.invalidateQueries({
         queryKey: ["genres"],
       });
-      console.log("Successfully created a genre");
+      toast.success("Genre added successfully");
     },
     onError: (error) => {
-      console.error(error);
+      toast.error(error.message);
     },
   });
   return { mutate, isPending };
