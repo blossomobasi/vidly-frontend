@@ -6,7 +6,7 @@ import { useLogin } from "../hooks/auth/useLogin";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { mutate: login, isPending: isLoggingIn, error } = useLogin();
+  const { mutate: login, isPending: isLoggingIn } = useLogin();
 
   function handleLogin(e: React.FormEvent) {
     e.preventDefault();
@@ -15,9 +15,6 @@ function Login() {
       return;
     }
 
-    if (error) {
-      console.log(error.message);
-    }
     login({ email, password });
   }
 
