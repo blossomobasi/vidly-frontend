@@ -1,4 +1,4 @@
-import AddNewGenre from "../../components/AddNewGenre";
+import AddNewGenre from "../../admin-components/AddNewGenre";
 // import UpdateGenre from "../../components/UpdateGenre";
 
 function AdminGenre() {
