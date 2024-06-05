@@ -1,30 +1,29 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { Toaster } from "react-hot-toast";
 
 import AppLayout from "./ui/AppLayout";
+import PageNotFound from "./ui/PageNotFound";
+import ProtectedRoutes from "./components/ProtectedRoutes";
+import AdminRoute from "./components/AdminRoute";
+import AdminProtectedRoute from "./components/AdminProtectedRoute";
+import AdminLayout from "./admin-components/AdminLayout";
+import AdminMovie from "./admin-components/AdminMovie";
+
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import MoviesPage from "./pages/MoviesPage";
 import Dashboard from "./pages/Dashboard";
-import PageNotFound from "./ui/PageNotFound";
-import ProtectedRoutes from "./components/ProtectedRoutes";
-import AdminProtectedRoute from "./components/AdminProtectedRoute";
 import MovieIdPage from "./pages/MovieIdPage";
-import { Toaster } from "react-hot-toast";
-import AdminLayout from "./admin-components/AdminLayout";
-import AdminRoute from "./components/AdminRoute";
-// import AdminGenre from "./admin-components/AdminGenre";
 import AdminGenre from "./pages/admin/AdminGenre";
-import AdminMovie from "./admin-components/AdminMovie";
 
 function App() {
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
-        // staleTime: 1000 * 60, // 1 minute
         retry: 1,
       },
     },

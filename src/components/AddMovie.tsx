@@ -10,6 +10,9 @@ function AddMovie() {
   const [numberInStock, setNumberInStock] = useState(0);
   const [dailyRentalRate, setDailyRentalRate] = useState(0);
 
+  const genreIdFromLocalStorage = localStorage.getItem("selectedGenre");
+  console.log(genreIdFromLocalStorage);
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -44,11 +47,11 @@ function AddMovie() {
             Genre ID
           </label>
           <input
-            disabled={isAddingMovie}
+            disabled
             type="text"
             id="genreId"
             className={styles.input}
-            value={genreId}
+            value={genreIdFromLocalStorage || genreId}
             onChange={(e) => setGenreId(e.target.value)}
           />
         </div>

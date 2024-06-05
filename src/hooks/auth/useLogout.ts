@@ -8,6 +8,7 @@ export function useLogout() {
 
   function logout() {
     localStorage.removeItem("token");
+    localStorage.removeItem("selectedGenre");
     queryClient.clear();
     toast.success("Successfully logged out");
     navigate("/login");
