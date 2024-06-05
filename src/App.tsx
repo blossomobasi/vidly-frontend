@@ -9,7 +9,6 @@ import ProtectedRoutes from "./components/ProtectedRoutes";
 import AdminRoute from "./components/AdminRoute";
 import AdminProtectedRoute from "./components/AdminProtectedRoute";
 import AdminLayout from "./admin-components/AdminLayout";
-import AdminMovie from "./admin-components/AdminMovie";
 
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -19,6 +18,7 @@ import MoviesPage from "./pages/MoviesPage";
 import Dashboard from "./pages/Dashboard";
 import MovieIdPage from "./pages/MovieIdPage";
 import AdminGenre from "./pages/admin/AdminGenre";
+import AdminMovie from "./pages/admin/AdminMovie";
 
 function App() {
   const queryClient = new QueryClient({
