@@ -1,3 +1,4 @@
+import AdminGenre from "../admin-components/AdminGenre";
 import { useUser } from "../hooks/auth/useUser";
 
 function AdminRoute() {
@@ -8,6 +9,8 @@ function AdminRoute() {
       <p>Welcome Admin {user?.firstName}</p>
 
       <p>Data that should only be visible to an ADMIN</p>
+
+      <AdminGenre />
     </div>
   );
 }
