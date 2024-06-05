@@ -1,4 +1,5 @@
 import AdminGenre from "../admin-components/AdminGenre";
+import AdminMovie from "../admin-components/AdminMovie";
 import { useUser } from "../hooks/auth/useUser";
 
 function AdminRoute() {
@@ -11,6 +12,7 @@ function AdminRoute() {
       <p>Data that should only be visible to an ADMIN</p>
 
       <AdminGenre />
+      <AdminMovie />
     </div>
   );
 }
