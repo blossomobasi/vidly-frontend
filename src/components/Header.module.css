@@ -18,5 +18,5 @@ nav ul a {
 }
 
 :global(.active) {
-    color: brown;
+    color: red;
 }
