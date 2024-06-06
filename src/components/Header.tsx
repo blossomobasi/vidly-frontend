@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import styles from "./Header.module.css";
 import { useUser } from "../hooks/auth/useUser";
 import { useLogout } from "../hooks/auth/useLogout";
@@ -7,6 +7,7 @@ const Header = () => {
     const logout = useLogout();
     const navigate = useNavigate();
     const { user, isAuthenticated, isAdmin } = useUser();
+    const { pathname } = useLocation();
     const links = [
         { name: "home", href: "/" },
         { name: "movies", href: "/movies" },
@@ -36,7 +37,11 @@ const Header = () => {
                         {link.name}
                     </NavLink>
                 ))}
-                {isAdmin && <NavLink to="admin-dashboard">Admin</NavLink>}
+                {isAdmin && (
+                    <NavLink to={pathname.includes("admin-dashboard") ? "" : "admin-dashboard"}>
+                        Admin
+                    </NavLink>
+                )}
             </ul>
             <button onClick={handleLogout}>Logout</button>
         </nav>
