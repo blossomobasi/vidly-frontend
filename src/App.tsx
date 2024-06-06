@@ -19,6 +19,7 @@ import Dashboard from "./pages/Dashboard";
 import MovieIdPage from "./pages/MovieIdPage";
 import AdminGenre from "./pages/admin/AdminGenre";
 import AdminMovie from "./pages/admin/AdminMovie";
+import AdminUser from "./pages/admin/AdminUser";
 
 function App() {
     const queryClient = new QueryClient({
@@ -45,6 +46,7 @@ function App() {
                         <Route index element={<AdminRoute />} />
                         <Route path="genres" element={<AdminGenre />} />
                         <Route path="movies" element={<AdminMovie />} />
+                        <Route path="users" element={<AdminUser />} />
                     </Route>
 
                     <Route
