@@ -15,9 +15,14 @@ export interface RegisterInput {
 }
 
 export interface IUser {
-    id: string;
+    _id: string;
     firstName: string;
     lastName: string;
     email: string;
     role: "user" | "admin";
+    date: string;
+}
+export interface UserResponse {
+    status: string;
+    data: IUser[];
 }
