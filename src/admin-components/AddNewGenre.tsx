@@ -5,7 +5,7 @@ function AddNewGenre() {
     const [newGenre, setNewGenre] = useState("");
     const { mutate: addGenre, isPending } = useCreateGenre();
 
-    function handleAddGenre(e: React.FormEvent, newGenre: string) {
+    function handleAddGenre(e: React.FormEvent) {
         e.preventDefault();
         addGenre(newGenre);
         setNewGenre("");
@@ -13,6 +13,7 @@ function AddNewGenre() {
 
     return (
         <form>
+            <h3>Add new Genre</h3>
             <input
                 type="text"
                 placeholder="Add new genre"
@@ -22,7 +23,7 @@ function AddNewGenre() {
             <button
                 disabled={isPending || !newGenre}
                 type="submit"
-                onClick={(e) => handleAddGenre(e, newGenre)}
+                onClick={(e) => handleAddGenre(e)}
             >
                 Add new Genre
             </button>
