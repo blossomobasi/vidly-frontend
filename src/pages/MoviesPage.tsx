@@ -2,13 +2,13 @@ import Genres from "../components/Genres";
 import Movies from "../components/Movies";
 
 function GenresPage() {
-  return (
-    <div>
-      <Genres />
+    return (
+        <div>
+            <Genres />
 
-      <Movies />
-    </div>
-  );
+            <Movies />
+        </div>
+    );
 }
 
 export default GenresPage;

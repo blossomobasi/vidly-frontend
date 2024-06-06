@@ -3,10 +3,10 @@ import { getGenres } from "../../services/genres/getGenres";
 import { Genre } from "../../types/genre";
 
 export function useGenres() {
-  const { data, isLoading, error } = useQuery<Genre[], Error>({
-    queryKey: ["genres"],
-    queryFn: getGenres,
-  });
+    const { data, isLoading, error } = useQuery<Genre[], Error>({
+        queryKey: ["genres"],
+        queryFn: getGenres,
+    });
 
-  return { data, isLoading, error };
+    return { data, isLoading, error };
 }

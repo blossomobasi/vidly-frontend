@@ -1,7 +1,7 @@
 import Header from "../components/Header";
 
 function AdminHeader() {
-  return <Header />;
+    return <Header />;
 }
 
 export default AdminHeader;
