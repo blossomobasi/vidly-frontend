@@ -20,6 +20,7 @@ function Movies() {
 
     const handleDeleteMovie = (e: React.MouseEvent, movieId: string) => {
         e.stopPropagation();
+
         if (window.confirm("Are you sure you want to delete this movie?")) {
             deleteMovie(movieId);
         }
