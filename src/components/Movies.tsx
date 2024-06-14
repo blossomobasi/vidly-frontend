@@ -1,10 +1,15 @@
 import { useNavigate } from "react-router-dom";
-import { useMovies } from "../hooks/movies/useMovies";
 import styles from "./Movie.module.css";
+
+import { useMovies } from "../hooks/movies/useMovies";
+import { useUser } from "../hooks/auth/useUser";
+import { useDeleteMovie } from "../hooks/movies/useDeleteMovie";
 
 function Movies() {
     const navigate = useNavigate();
     const { movies, isLoading, error } = useMovies();
+    const { isAdmin } = useUser();
+    const { deleteMovie, isDeleting } = useDeleteMovie();
 
     if (isLoading) {
         return <div>Loading...</div>;
@@ -12,6 +17,13 @@ function Movies() {
     if (error) {
         return <div>{error.message}</div>;
     }
+
+    const handleDeleteMovie = (e: React.MouseEvent, movieId: string) => {
+        e.stopPropagation();
+        if (window.confirm("Are you sure you want to delete this movie?")) {
+            deleteMovie(movieId);
+        }
+    };
 
     return (
         <>
@@ -25,6 +37,14 @@ function Movies() {
                     >
                         <small>{movie.genre.name}</small>
                         <h2>Movie &mdash; {movie.title}</h2>
+                        {isAdmin && (
+                            <button
+                                disabled={isDeleting}
+                                onClick={(e) => handleDeleteMovie(e, movie.title)}
+                            >
+                                Delete movie
+                            </button>
+                        )}
                     </div>
                 ))}
             </div>
