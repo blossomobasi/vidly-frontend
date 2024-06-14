@@ -8,6 +8,7 @@ function AdminSidebar() {
         { name: "genres", href: `${baseLink}/genres` },
         { name: "movies", href: `${baseLink}/movies` },
         { name: "users", href: `${baseLink}/users` },
+        { name: "customers", href: `${baseLink}/customers` },
     ];
 
     return (
