@@ -1,3 +1,4 @@
+import AddCustomers from "../../admin-components/AddCustomers";
 import AllCustomers from "../../admin-components/AllCustomers";
 
 const AdminCustomer = () => {
@@ -6,6 +7,7 @@ const AdminCustomer = () => {
             <h3>Operations on Customers</h3>
 
             <AllCustomers />
+            <AddCustomers />
         </div>
     );
 };
