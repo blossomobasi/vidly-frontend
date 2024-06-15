@@ -6,7 +6,7 @@ const AllCustomers = () => {
     return (
         <div>
             <h3>All Customers</h3>
-            {isLoadingCustomers && <p>Loading...</p>}
+            {isLoadingCustomers && <p>Loading customers...</p>}
             {error && <p>{error.message}</p>}
             {customers && (
                 <ul>
@@ -34,7 +34,6 @@ const AllCustomers = () => {
                                         : "Hi, there, No Special offers for you!"}
                                 </p>
                             </span>
-                            <br />
 
                             <hr />
                         </React.Fragment>
