@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import styles from "./SignUp.module.css";
 import { useState } from "react";
 import { useRegisterUser } from "../hooks/auth/useRegisterUser";
+import FormRow from "../ui/FormRow";
 
 function SignUp() {
     const [firstName, setFirstName] = useState("");
@@ -32,10 +33,7 @@ function SignUp() {
         <div className={styles.signupFormContainer}>
             <form className={styles.signupForm} onSubmit={handleRegisterUser}>
                 <h2 className={styles.title}>Sign Up</h2>
-                <div className={styles.formGroup}>
-                    <label htmlFor="firstName" className={styles.label}>
-                        First Name:
-                    </label>
+                <FormRow label="First Name:">
                     <input
                         disabled={isRegistering}
                         value={firstName}
@@ -45,9 +43,9 @@ function SignUp() {
                         className={styles.input}
                         required
                     />
-                    <label htmlFor="lastName" className={styles.label}>
-                        Last Name:
-                    </label>
+                </FormRow>
+
+                <FormRow label="Last Name:">
                     <input
                         disabled={isRegistering}
                         value={lastName}
@@ -57,10 +55,9 @@ function SignUp() {
                         className={styles.input}
                         required
                     />
+                </FormRow>
 
-                    <label htmlFor="email" className={styles.label}>
-                        Email:
-                    </label>
+                <FormRow label="Email:">
                     <input
                         disabled={isRegistering}
                         value={email}
@@ -70,11 +67,9 @@ function SignUp() {
                         className={styles.input}
                         required
                     />
-                </div>
-                <div className={styles.formGroup}>
-                    <label htmlFor="password" className={styles.label}>
-                        Password:
-                    </label>
+                </FormRow>
+
+                <FormRow label="Password:">
                     <input
                         disabled={isRegistering}
                         value={password}
@@ -84,11 +79,9 @@ function SignUp() {
                         className={styles.input}
                         required
                     />
-                </div>
-                <div className={styles.formGroup}>
-                    <label htmlFor="confirmPassword" className={styles.label}>
-                        Confirm Password:
-                    </label>
+                </FormRow>
+
+                <FormRow label="Confirm Password:">
                     <input
                         disabled={isRegistering}
                         value={confirmPassword}
@@ -98,7 +91,8 @@ function SignUp() {
                         className={styles.input}
                         required
                     />
-                </div>
+                </FormRow>
+
                 <button
                     disabled={
                         isRegistering ||

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import styles from "./Login.module.css";
 import { useState } from "react";
 import { useLogin } from "../hooks/auth/useLogin";
+import FormRow from "../ui/FormRow";
 
 function Login() {
     const [email, setEmail] = useState("");
@@ -22,10 +23,7 @@ function Login() {
         <div className={styles.loginFormContainer}>
             <form className={styles.loginForm} onSubmit={handleLogin}>
                 <h2 className={styles.title}>Login</h2>
-                <div className={styles.formGroup}>
-                    <label htmlFor="email" className={styles.label}>
-                        Email:
-                    </label>
+                <FormRow label="Email:">
                     <input
                         disabled={isLoggingIn}
                         value={email}
@@ -35,11 +33,9 @@ function Login() {
                         className={styles.input}
                         required
                     />
-                </div>
-                <div className={styles.formGroup}>
-                    <label htmlFor="password" className={styles.label}>
-                        Password:
-                    </label>
+                </FormRow>
+
+                <FormRow label="Password:">
                     <input
                         disabled={isLoggingIn}
                         value={password}
@@ -49,7 +45,8 @@ function Login() {
                         className={styles.input}
                         required
                     />
-                </div>
+                </FormRow>
+
                 <button
                     disabled={isLoggingIn || !email || !password}
                     type="submit"
