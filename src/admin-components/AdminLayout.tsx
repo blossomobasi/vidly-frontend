@@ -6,12 +6,13 @@ import styles from "./AdminLayout.module.css";
 
 function AdminLayout() {
     const { user } = useUser();
+
     return (
         <div className={styles.container}>
             <AdminHeader />
             <AdminSidebar />
 
-            <main>
+            <main style={{ overflow: "auto" }}>
                 <h1>AdminRoute</h1>
                 <p>Welcome Admin {user?.firstName}</p>
 
