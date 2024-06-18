@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useAddMovie } from "../hooks/movies/useAddMovie";
 import styles from "./AddMovie.module.css";
+import FormRow from "../ui/FormRow";
+import Genres from "../components/Genres";
 
 function AddMovie() {
     const [isOpen, setIsOpen] = useState(false);
@@ -32,10 +34,7 @@ function AddMovie() {
 
             {isOpen && (
                 <form className={styles.form} onSubmit={handleSubmit}>
-                    <div className={styles.formGroup}>
-                        <label htmlFor="title" className={styles.label}>
-                            Title
-                        </label>
+                    <FormRow label="Title:">
                         <input
                             disabled={isAddingMovie}
                             type="text"
@@ -44,35 +43,34 @@ function AddMovie() {
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
                         />
-                    </div>
-                    <div className={styles.formGroup}>
-                        <label htmlFor="genreId" className={styles.label}>
-                            Genre ID
-                        </label>
-                        <input
-                            disabled
-                            type="text"
-                            id="genreId"
-                            className={styles.input}
-                            value={genreIdFromLocalStorage || genreId}
-                            onChange={(e) => setGenreId(e.target.value)}
-                        />
-                    </div>
-                    <div className={styles.formGroup}>
-                        <label htmlFor="description" className={styles.label}>
-                            Description
-                        </label>
+                    </FormRow>
+
+                    <FormRow label="Genre ID:">
+                        <>
+                            <input
+                                // disabled
+                                type="text"
+                                id="genreId"
+                                className={styles.input}
+                                value={genreIdFromLocalStorage || genreId}
+                                onChange={(e) => setGenreId(e.target.value)}
+                            />
+                            <div style={{ display: "flex", justifyContent: "end" }}>
+                                <Genres />
+                            </div>
+                        </>
+                    </FormRow>
+
+                    <FormRow label="Description:">
                         <textarea
                             id="description"
                             className={styles.textarea}
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
                         ></textarea>
-                    </div>
-                    <div className={styles.formGroup}>
-                        <label htmlFor="numberInStock" className={styles.label}>
-                            Number In Stock
-                        </label>
+                    </FormRow>
+
+                    <FormRow label="Number in Stock">
                         <input
                             disabled={isAddingMovie}
                             type="number"
@@ -81,11 +79,9 @@ function AddMovie() {
                             value={numberInStock}
                             onChange={(e) => setNumberInStock(parseInt(e.target.value))}
                         />
-                    </div>
-                    <div className={styles.formGroup}>
-                        <label htmlFor="dailyRentalRate" className={styles.label}>
-                            Daily Rental Rate
-                        </label>
+                    </FormRow>
+
+                    <FormRow label="Daily Rental Rate:">
                         <input
                             disabled={isAddingMovie}
                             type="number"
@@ -94,7 +90,8 @@ function AddMovie() {
                             value={dailyRentalRate}
                             onChange={(e) => setDailyRentalRate(parseFloat(e.target.value))}
                         />
-                    </div>
+                    </FormRow>
+
                     <button
                         disabled={
                             isAddingMovie ||
