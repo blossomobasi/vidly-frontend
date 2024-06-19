@@ -17,6 +17,7 @@ function Movies() {
     if (error) {
         return <div>{error.message}</div>;
     }
+    if (!movies) return <div>NO movie found</div>;
 
     const handleDeleteMovie = (e: React.MouseEvent, movieId: string) => {
         e.stopPropagation();
