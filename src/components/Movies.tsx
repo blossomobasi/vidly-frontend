@@ -11,13 +11,11 @@ function Movies() {
     const { isAdmin } = useUser();
     const { deleteMovie, isDeleting } = useDeleteMovie();
 
-    if (isLoading) {
-        return <div>Loading...</div>;
-    }
-    if (error) {
-        return <div>{error.message}</div>;
-    }
-    if (!movies) return <div>NO movie found</div>;
+    if (isLoading) return <div>Loading...</div>;
+
+    if (error) return <div>{error.message}</div>;
+
+    if (!movies?.length) return <div>NO movie found</div>;
 
     const handleDeleteMovie = (e: React.MouseEvent, movieId: string) => {
         e.stopPropagation();
