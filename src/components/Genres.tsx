@@ -11,8 +11,6 @@ function Genres() {
     const handleGenreChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setSelectedGenre(e.target.value);
         localStorage.setItem("selectedGenre", e.target.value);
-
-        window.location.reload();
     };
 
     return (
