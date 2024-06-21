@@ -12,7 +12,7 @@ export interface MovieResponse {
 
 export interface Movie {
     title: string;
-    genreId: string;
+    genreName: string;
     description: string;
     numberInStock: number;
     dailyRentalRate: number;
