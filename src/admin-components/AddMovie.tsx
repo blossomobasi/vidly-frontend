@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAddMovie } from "../hooks/movies/useAddMovie";
 import styles from "./AddMovie.module.css";
 import FormRow from "../ui/FormRow";
@@ -8,19 +8,35 @@ function AddMovie() {
     const [isOpen, setIsOpen] = useState(false);
     const { addMovie, isAddingMovie } = useAddMovie();
     const [title, setTitle] = useState("");
-    const [genreId, setGenreId] = useState("");
+    const [genreName, setGenreName] = useState("");
     const [description, setDescription] = useState("");
     const [numberInStock, setNumberInStock] = useState(0);
     const [dailyRentalRate, setDailyRentalRate] = useState(0);
 
-    const genreIdFromLocalStorage = localStorage.getItem("selectedGenre");
+    useEffect(() => {
+        const storedGenre = localStorage.getItem("selectedGenre");
+        if (storedGenre) {
+            setGenreName(storedGenre);
+        }
+
+        const handleStorageChange = () => {
+            const newGenre = localStorage.getItem("selectedGenre");
+            if (newGenre) setGenreName(newGenre);
+        };
+
+        window.addEventListener("storage", handleStorageChange);
+
+        return () => window.removeEventListener("storage", handleStorageChange);
+    }, [genreName]);
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
+        if (!genreName) return console.log("genreName is required");
+
         addMovie({
             title,
-            genreId,
+            genreName,
             description,
             numberInStock,
             dailyRentalRate,
@@ -45,15 +61,15 @@ function AddMovie() {
                         />
                     </FormRow>
 
-                    <FormRow label="Genre ID:">
+                    <FormRow label="Genre Name:">
                         <>
                             <input
-                                // disabled
+                                disabled
                                 type="text"
-                                id="genreId"
+                                id="genreName"
                                 className={styles.input}
-                                value={genreIdFromLocalStorage || genreId}
-                                onChange={(e) => setGenreId(e.target.value)}
+                                value={genreName}
+                                onChange={(e) => setGenreName(e.target.value)}
                             />
                             <div style={{ display: "flex", justifyContent: "end" }}>
                                 <Genres />
@@ -96,7 +112,7 @@ function AddMovie() {
                         disabled={
                             isAddingMovie ||
                             !title ||
-                            !genreId ||
+                            !genreName ||
                             !description ||
                             !numberInStock ||
                             !dailyRentalRate
