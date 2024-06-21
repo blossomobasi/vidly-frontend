@@ -10,7 +10,7 @@ export function useAddMovie() {
         isPending: isAddingMovie,
         error,
     } = useMutation<MovieResponse, Error, Movie>({
-        mutationFn: (movie) => addMovieAPI(movie),
+        mutationFn: addMovieAPI,
         onSuccess: () => {
             queryClient.invalidateQueries({
                 queryKey: ["movies"],
